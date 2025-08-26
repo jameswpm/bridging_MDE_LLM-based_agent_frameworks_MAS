@@ -1,443 +1,465 @@
-@namespace(uri="agentic")
+@namespace(uri="http://agentic", prefix="agentic")
 package agentic;
 
-/*
-An agent is an autonomous software entity that can perform tasks alone or in collaboration with other agents. 
-Agents perceive their environment, maintain internal state, and take actions based on instructions or goals.
-*/
-class Agent {
-  // Agents have unique identifiers (addresses, names, or IDs).
-  attr String identifier;
-  attr String name;
-  // Agents may be public-facing or private (depending on deployment).
-  attr Visibility visibility;
-  attr AgentRole role;
-  // Agents can be classified by type or specialization.
-  attr String type;
-  // Agents use Tools to perform Tasks.
-  ref Tool[*] tools;
-  // Agents have Memory components to store Context and history.
-  ref Memory memory;
-  // Agents rely on Models to interpret input and generate responses.
-  ref Model[*] models;
-  // Agents have access to external Knowledge.
-  ref Knowledge knowledge;
-  // Agents can perform Reasoning to solve problems.
-  ref Reasoning reasoning;
-  // Agents use Storage to persist their State.
-  ref Storage storage;
-  // Agents may have a Goal to achieve.
-  ref Goal goal;
-  // States can be shared between Agents in the same Team for coordination.
-  ref State state;
-  // Agents can form or join Teams of agents.
-  ref Team#members team;
-  // Agents can act based on their reasoning processes or according to a Workflow.
-  ref Workflow workflow;
-  // Agents execute code at runtime via an Interpreter.
-  ref Interpreter interpreter;
-  // Agents follow given Instructions (Represented by requirements).
-  ref Requirement[*] requirements;
-}
-
-// Agents may be public-facing or private (depending on deployment).
-enum Visibility {
-	PUBLIC;
-	TEAM; 
-	PRIVATE;
-}
-
-enum AgentRole {
-	MANAGER; 
-	SPECIALIST;
-	MEMBER;
-}
-
-/**
- * A utility or service that an agent can use to perform a task.
- * Often, they are external APIs or functions invoked by agents.
- */
-class Tool {
-  attr String name;
-  // Agents use Tools to perform Tasks.
-  // Tools perform one or more Tasks for agents.
-  ref Task[*] tasks;
-  // Tools interface with external systems or APIs (the Environment).
-  ref Environment[*] environments;
-  // Hooks may intercept or modify a Tool's execution when triggered.
-  ref Hook[*]#usedInTool hooks;
-}
-
-/**
- * The mechanism by which an agent, a team, or the user stores and retrieves information.
- */
-class Memory {
-  attr MemoryType type;
-  val Context[*]#originMemory contexts;
-  val Session[*] sessions;
-  // Memory implementations vary, but a common approach uses a VectorDB to store semantic embeddings.
-  ref Storage storage; //usually a VectorDB
-}
-
-// Memory can be short-term (ephemeral, per Session) or long-term (persistent across sessions).
-enum MemoryType {
-	WORKING;
-	EPISODIC;
-	SEMANTIC;
-	PROCEDURAL;
-	RESOURCE;
-}
-
-/**
- * A model is a trained ML component that processes input and produces output.
- */
-class Model {
-  attr String name;
-  attr String version;
-  // Models support reasoning capabilities through pretraining or fine-tuning.
-  ref Reasoning reasoning;
-  ref Context#associatedModel modelParams;
-}
-
-
-/**
- * Domain-specific information accessible by agents.
- */
-class Knowledge {
-  attr String domain;
-  ref RetrievalStrategy#usedInKnowledge retrievalStrategy;
-  // Knowledge often resides outside an agent's internal state (e.g., in documents, databases, or knowledge bases).
-  ref ExternalData data;
-  // Knowledge can be loaded into Memory for temporary use or stored in Storage for long-term use.
-  ref Memory associatedMemory;
-  ref Storage associatedStorage;
-}
-
-/**
- * The agent's process of thinking, making inferences, and decisions.
- */
-class Reasoning {
-	attr ReasoningStrategy strategy;
-	ref Knowledge usedInKnowledge;
-}
-
-enum ReasoningStrategy{
-	RULE_BASED;
-	PLANNING; 
-	ML_BASED;
-	HYBRID;
-}
-
-/**
- * The database used by agents to save information and state across sessions.
- */
-class Storage {
-  attr StorageType type; 
-  // Agents use Storage to persist their State.
-  // Agents have a current State at any given time.
-  ref State[*]#storedAt states;
-  // Storage can hold large or long-term data
-  ref ExternalData data;
-}
-
-enum StorageType {
-	FILE_SYSTEM;
-	SQL_DATABASE; 
-	KEY_VALUE_DB;
-	GRAPH_DB;
-}
-
-/**
- * A prompt is an input message that instructs the agent on what to do.
- */
-class Prompt {
-  attr String content;
-  ref InputSchema inputSchema;
-  ref OutputSchema outputSchema;
-  ref PromptTemplate template;
-  ref Context[*] contexts;
-}
-
-enum PromptType {
-	SYSTEM;
-	USER; 
-	ASSISTANT;
-}
-
-/**
- * A collection of agents using a coordination strategy.
- */
-class Team {
-  ref Agent[*]#team members;
-  ref Memory sharedMemory;
-  ref Storage sharedStorage;
-  ref Knowledge sharedKnowledge;
-}
-
-/**
- * The current condition or data of an agent at a given time.
- */
-class State {
-  attr String value;
-  // An Agent's State includes its current data or context at a given time.
-  attr Date createdAt;
-  // State information may be persisted to Storage or cached in Memory.
-  ref Storage#states storedAt;
-  ref Memory cachedAt;
-}
-
-/**
- * A specific action or set of actions designed for agents.
- */
-class Task {
-  attr String description;
-  ref Agent[*] performedBy;
-  //Tasks may be defined by Users or by other agents.
-  ref User[0..1] definedBy;
-}
-
-/**
- * The context or setting in which agents operate.
- */
-class Environment {
-  attr String name;
-  attr String type;
-  // The Environment includes external systems, data sources, and Users outside the Agents.
-  ref ExternalData data;
-  ref Context#originContext associatedContext;
-}
-
-/**
- * A specialized storage for high-dimensional embeddings.
- */
-class VectorDB extends Storage {
-// VectorDB stores information in vector form (via embeddings) for similarity-based retrieval.
-  ref Embedding[*] embeddings;
-}
-
-/**
- * A hook is an event-triggered function for custom actions or checks.
- */
-class Hook {
-  attr String trigger;
-  ref Tool#hooks usedInTool;
-}
-
-
-/**
- * A person or team that interacts with agents.
- */
-class User {
-  // A User is an external actor (person or team) who interacts with agents.
-  attr String identifier;
-  ref Session[*] sessions;
-  ref Context#originUser userContext;
-}
-
-/**
-* RAG is the most used kind of strategy, but not the only one
-**/
-abstract class RetrievalStrategy {
-	attr String name;
-}
-
-/**
- * Retrieval-Augmented Generation strategy.
- */
-class RAG extends RetrievalStrategy {
-  ref VectorDB vectorDB;
-}
-
-/**
- * A deterministic sequence of steps for agent execution.
- */
-class Workflow {
-  val Step[*] steps;
-  val Transition[*] transitions;
-}
-
-enum SchemaType {
-	JSON_SCHEMA;
-	XML;
-}
-
-/**
- * Input validation schema for agent input.
- */
-class InputSchema {
-  attr String definition;
-  // Input schemas can be formally specified using structured languages (e.g., JSON Schema).
-  attr SchemaType type;
-}
-
-/**
- * The desired outcome agents aim to achieve.
- */
-class Goal {
-  attr String objective;
-  // Goals can be defined by users and may be represented in the agent's state.
-  ref User definedBy;
-}
-
-/**
- * Links a user to an agent over interactions.
- */
-class Session {
-  ref User user;
-  ref Agent agent;
-}
-
-/**
- * A single API request to a model with a prompt.
- */
-class DirectLLMCall {
-  ref Model model;
-  ref Prompt prompt;
-}
-
-/**
- * Instructions that tell agents how to behave and use tools.
- */
-class Instruction {
-  attr String content;
-  ref Requirement[*] requirements;
-}
-
-/**
- * A step requiring human input or oversight.
- */
-class HumanInteraction {
-  attr boolean isBlocking;
-  // Human interaction is a step requiring user input or oversight during agent execution.
-  ref User responsibleActor;
-}
-
-/**
- * Additional info injected into a prompt to situate it.
- */
-class Context {
-  attr String content;
-  // Context can come from the Environment, Memory, or User input.
-  ref Environment#associatedContext originEnvironment;
-  ref Memory#contexts originMemory;
-  ref User#userContext originUser;
-  // Context may include Model settings or runtime parameters.
-  ref Model#modelParams associatedModel;
-}
-
-/**
- * Validation schema for agent output.
- */
-class OutputSchema {
-  attr String definition;
-  // Input schemas can be formally specified using structured languages (e.g., JSON Schema).
-  attr SchemaType type;
-}
-
-enum TemplateType{
+// =======================
+// Construction Subpackage
+// =======================
+@namespace(uri="http://agentic/construction", prefix="construction")
+package construction{
+	/*
+	An agent is an autonomous software entity that can perform tasks alone or in collaboration with other agents. 
+	Agents perceive their environment, maintain internal state, and take actions based on instructions or goals.
+	*/
+	class Agent {
+	  // Agents have unique identifiers (addresses, names, or IDs).
+	  attr String identifier;
+	  attr String name;
+	  // Agents may be public-facing or private (depending on deployment).
+	  attr Visibility visibility;
+	  attr AgentRole role;
+	  // Agents can be classified by type or specialization.
+	  attr String type;
+	  // Agents use Tools to perform Tasks.
+	  ref Tool[*] tools;
+	  // Agents have Memory components to store Context and history.
+	  ref Memory memory;
+	  // Agents rely on Models to interpret input and generate responses.
+	  ref Model[*] models;
+	  // Agents have access to external Knowledge.
+	  ref Knowledge knowledge;
+	  // Agents can perform Reasoning to solve problems.
+	  ref Reasoning reasoning;
+	  // Agents use Storage to persist their State.
+	  ref Storage storage;
+	  // Agents may have a Goal to achieve.
+	  ref Goal goal;
+	  // States can be shared between Agents in the same Team for coordination.
+	  ref State state;
+	  // Agents can form or join Teams of agents.
+	  ref communication.Team#members team;
+	  // Agents can act based on their reasoning processes or according to a Workflow.
+	  ref Workflow workflow;
+	  // Agents execute code at runtime via an Interpreter.
+	  ref Interpreter interpreter;
+	  // Agents follow given Instructions (Represented by requirements).
+	  ref Requirement[*] requirements;
+	}
+	
+	// Agents may be public-facing or private (depending on deployment).
+	enum Visibility {
+		PUBLIC;
+		TEAM; 
+		PRIVATE;
+	}
+	
+	enum AgentRole {
+		MANAGER; 
+		SPECIALIST;
+		MEMBER;
+	}
+	
+	/**
+	 * A utility or service that an agent can use to perform a task.
+	 * Often, they are external APIs or functions invoked by agents.
+	 */
+	class Tool {
+	  attr String name;
+	  // Agents use Tools to perform Tasks.
+	  // Tools perform one or more Tasks for agents.
+	  ref Task[*] tasks;
+	  // Tools interface with external systems or APIs (the Environment).
+	  ref communication.Environment[*] environments;
+	  // Hooks may intercept or modify a Tool's execution when triggered.
+	  ref Hook[*]#usedInTool hooks;
+	}
+	
+	/**
+	 * The mechanism by which an agent, a team, or the user stores and retrieves information.
+	 */
+	class Memory {
+	  attr MemoryType type;
+	  val communication.Context[*]#originMemory contexts;
+	  val communication.Session[*] sessions;
+	  // Memory implementations vary, but a common approach uses a VectorDB to store semantic embeddings.
+	  ref Storage storage; //usually a VectorDB
+	}
+	
+	// Memory can be short-term (ephemeral, per Session) or long-term (persistent across sessions).
+	enum MemoryType {
+		WORKING;
+		EPISODIC;
+		SEMANTIC;
+		PROCEDURAL;
+		RESOURCE;
+	}
+	
+	/**
+	 * A model is a trained ML component that processes input and produces output.
+	 */
+	class Model {
+	  attr String name;
+	  attr String version;
+	  // Models support reasoning capabilities through pretraining or fine-tuning.
+	  ref Reasoning reasoning;
+	  ref communication.Context#associatedModel modelParams;
+	}
+	
+	
+	/**
+	 * Domain-specific information accessible by agents.
+	 */
+	class Knowledge {
+	  attr String domain;
+	  ref RetrievalStrategy#usedInKnowledge retrievalStrategy;
+	  // Knowledge often resides outside an agent's internal state (e.g., in documents, databases, or knowledge bases).
+	  ref ExternalData data;
+	  // Knowledge can be loaded into Memory for temporary use or stored in Storage for long-term use.
+	  ref Memory associatedMemory;
+	  ref Storage associatedStorage;
+	}
+	
+	/**
+	 * The agent's process of thinking, making inferences, and decisions.
+	 */
+	class Reasoning {
+		attr ReasoningStrategy strategy;
+		ref Knowledge usedInKnowledge;
+	}
+	
+	enum ReasoningStrategy{
+		RULE_BASED;
+		PLANNING; 
+		ML_BASED;
+		HYBRID;
+	}
+	
+	/**
+	 * The database used by agents to save information and state across sessions.
+	 */
+	class Storage {
+	  attr StorageType type; 
+	  // Agents use Storage to persist their State.
+	  // Agents have a current State at any given time.
+	  ref State[*]#storedAt states;
+	  // Storage can hold large or long-term data
+	  ref ExternalData data;
+	}
+	
+	enum StorageType {
+		FILE_SYSTEM;
+		SQL_DATABASE; 
+		KEY_VALUE_DB;
+		GRAPH_DB;
+	}
+	
+	/**
+	 * The current condition or data of an agent at a given time.
+	 */
+	class State {
+	  attr String value;
+	  // An Agent's State includes its current data or context at a given time.
+	  attr Date createdAt;
+	  // State information may be persisted to Storage or cached in Memory.
+	  ref Storage#states storedAt;
+	  ref Memory cachedAt;
+	}
+	
+	/**
+	 * A specific action or set of actions designed for agents.
+	 */
+	class Task {
+	  attr String description;
+	  ref Agent[*] performedBy;
+	  //Tasks may be defined by Users or by other agents.
+	  ref communication.User[0..1] definedBy;
+	}
+	
+	/**
+	 * A specialized storage for high-dimensional embeddings.
+	 */
+	class VectorDB extends Storage {
+	// VectorDB stores information in vector form (via embeddings) for similarity-based retrieval.
+	  ref Embedding[*] embeddings;
+	}
+	
+	/**
+	 * A hook is an event-triggered function for custom actions or checks.
+	 */
+	class Hook {
+	  attr String trigger;
+	  ref Tool#hooks usedInTool;
+	}
+	
+	/**
+	* RAG is the most used kind of strategy, but not the only one
+	**/
+	abstract class RetrievalStrategy {
+		attr String name;
+	}
+	
+	/**
+	 * Retrieval-Augmented Generation strategy.
+	 */
+	class RAG extends RetrievalStrategy {
+	  ref VectorDB vectorDB;
+	}
+	
+	/**
+	 * A deterministic sequence of steps for agent execution.
+	 */
+	class Workflow {
+	  val Step[*] steps;
+	  val Transition[*] transitions;
+	}
+	
+	/**
+	 * The desired outcome agents aim to achieve.
+	 */
+	class Goal {
+	  attr String objective;
+	  // Goals can be defined by users and may be represented in the agent's state.
+	  ref communication.User definedBy;
+	}
+	
+	enum TemplateType{
 	USER_DEFINED;
 	SYSTEM_DEFINED;
-}
-
-/**
- * A reusable prompt structure with placeholders.
- */
-class PromptTemplate {
-  attr String template;
-  attr TemplateType type;
-}
-
-/**
- * A rule controlling tool usage.
- */
-class Requirement {
-  attr String condition;
-  // Requirements may specify constraints or prerequisites for tool invocation.
-  ref Tool[*] tools;
-}
-
-/**
- * Hosts framework services via APIs.
- */
-class Server {
-  attr String endpoint;
-  ref Agent[*] exposedAgents;
-}
-
-abstract class ExternalData {
+	}
 	
+	/**
+	 * A reusable prompt structure with placeholders.
+	 */
+	class PromptTemplate {
+	  attr String template;
+	  attr TemplateType type;
+	}
+	
+	/**
+	 * A rule controlling tool usage.
+	 */
+	class Requirement {
+	  attr String condition;
+	  // Requirements may specify constraints or prerequisites for tool invocation.
+	  ref Tool[*] tools;
+	}
+	
+	/**
+	 * Hosts framework services via APIs.
+	 */
+	class Server {
+	  attr String endpoint;
+	  ref Agent[*] exposedAgents;
+	}
+	
+	abstract class ExternalData {
+		
+	}
+	
+	/**
+	 * Standard data container for transfers.
+	 */
+	class File extends ExternalData {
+	  attr String format;
+	  attr String path;
+	}
+	
+	/**
+	 * Executes code provided by agents.
+	 */
+	class Interpreter {
+	  attr boolean sandboxed;
+	  ref Runtime runtime;
+	}
+	
+	/**
+	 * Execution context for agents and code.
+	 */
+	class Runtime {
+	  attr String environment;
+	}
+	
+	/**
+	 * Key-value storage for temporary data.
+	 */
+	class KVStorage extends Storage {
+	}
+	
+	/**
+	 * Graph database for structured relationships.
+	 */
+	class GraphStorage extends Storage {
+	}
+	
+	/**
+	 * Abstraction of a component or step in a workflow.
+	 */
+	class Node {
+	  attr String identifier;
+	  attr String type;
+	}
+	
+	/**
+	 * Collection of tools available to agents.
+	 */
+	class Toolkit {
+	  ref Tool[*] tools;
+	}
+	
+	/**
+	 * Numeric vector representation of information.
+	 */
+	class Embedding {
+	  attr String vector;
+	  attr int dimension;
+	}
+	
+	/**
+	 * A unit of action within a workflow.
+	 */
+	class Step extends Node {
+	  attr String name;
+	}
+	
+	/**
+	 * Defines transitions between workflow steps.
+	 */
+	class Transition extends Node {
+	  attr String condition;
+	  ref Step source;
+	  ref Step target;
+	}
 }
 
-/**
- * Standard data container for transfers.
- */
-class File extends ExternalData {
-  attr String format;
-  attr String path;
+// =======================
+// Communication Subpackage
+// =======================
+@namespace(uri="http://agentic/communication", prefix="communication")
+package communication{
+	/**
+	 * A prompt is an input message that instructs the agent on what to do.
+	 */
+	class Prompt {
+	  attr String content;
+	  ref InputSchema inputSchema;
+	  ref OutputSchema outputSchema;
+	  ref construction.PromptTemplate template;
+	  ref Context[*] contexts;
+	}
+	
+	enum PromptType {
+		SYSTEM;
+		USER; 
+		ASSISTANT;
+	}
+	
+	/**
+	 * A collection of agents using a coordination strategy.
+	 */
+	class Team {
+	  ref construction.Agent[*]#team members;
+	  ref construction.Memory sharedMemory;
+	  ref construction.Storage sharedStorage;
+	  ref construction.Knowledge sharedKnowledge;
+	}
+	
+	
+	
+	/**
+	 * The context or setting in which agents operate.
+	 */
+	class Environment {
+	  attr String name;
+	  attr String type;
+	  // The Environment includes external systems, data sources, and Users outside the Agents.
+	  ref construction.ExternalData data;
+	  ref Context#originEnvironment associatedContext;
+	}
+	
+	
+	
+	
+	/**
+	 * A person or team that interacts with agents.
+	 */
+	class User {
+	  // A User is an external actor (person or team) who interacts with agents.
+	  attr String identifier;
+	  ref Session[*] sessions;
+	  ref Context#originUser userContext;
+	}
+	
+	
+	
+	enum SchemaType {
+		JSON_SCHEMA;
+		XML;
+	}
+	
+	/**
+	 * Input validation schema for agent input.
+	 */
+	class InputSchema {
+	  attr String definition;
+	  // Input schemas can be formally specified using structured languages (e.g., JSON Schema).
+	  attr SchemaType type;
+	}
+	
+	
+	
+	/**
+	 * Links a user to an agent over interactions.
+	 */
+	class Session {
+	  ref User user;
+	  ref construction.Agent agent;
+	}
+	
+	/**
+	 * A single API request to a model with a prompt.
+	 */
+	class DirectLLMCall {
+	  ref construction.Model model;
+	  ref Prompt prompt;
+	}
+	
+	/**
+	 * Instructions that tell agents how to behave and use tools.
+	 */
+	class Instruction {
+	  attr String content;
+	  ref construction.Requirement[*] requirements;
+	}
+	
+	/**
+	 * A step requiring human input or oversight.
+	 */
+	class HumanInteraction {
+	  attr boolean isBlocking;
+	  // Human interaction is a step requiring user input or oversight during agent execution.
+	  ref User responsibleActor;
+	}
+	
+	/**
+	 * Additional info injected into a prompt to situate it.
+	 */
+	class Context {
+	  attr String content;
+	  // Context can come from the Environment, Memory, or User input.
+	  ref Environment#associatedContext originEnvironment;
+	  ref construction.Memory#contexts originMemory;
+	  ref User#userContext originUser;
+	  // Context may include Model settings or runtime parameters.
+	  ref construction.Model#modelParams associatedModel;
+	}
+	
+	/**
+	 * Validation schema for agent output.
+	 */
+	class OutputSchema {
+	  attr String definition;
+	  // Input schemas can be formally specified using structured languages (e.g., JSON Schema).
+	  attr SchemaType type;
+	}
 }
 
-/**
- * Executes code provided by agents.
- */
-class Interpreter {
-  attr boolean sandboxed;
-  ref Runtime runtime;
-}
 
-/**
- * Execution context for agents and code.
- */
-class Runtime {
-  attr String environment;
-}
-
-/**
- * Key-value storage for temporary data.
- */
-class KVStorage extends Storage {
-}
-
-/**
- * Graph database for structured relationships.
- */
-class GraphStorage extends Storage {
-}
-
-/**
- * Abstraction of a component or step in a workflow.
- */
-class Node {
-  attr String identifier;
-  attr String type;
-}
-
-/**
- * Collection of tools available to agents.
- */
-class Toolkit {
-  ref Tool[*] tools;
-}
-
-/**
- * Numeric vector representation of information.
- */
-class Embedding {
-  attr String vector;
-  attr int dimension;
-}
-
-/**
- * A unit of action within a workflow.
- */
-class Step extends Node {
-  attr String name;
-}
-
-/**
- * Defines transitions between workflow steps.
- */
-class Transition extends Node {
-  attr String condition;
-  ref Step source;
-  ref Step target;
-}

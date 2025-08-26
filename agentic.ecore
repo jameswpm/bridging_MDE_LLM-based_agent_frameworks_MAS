@@ -1,260 +1,265 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="agentic" nsURI="agentic" nsPrefix="">
-  <eClassifiers xsi:type="ecore:EClass" name="Agent">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//Visibility"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="#//AgentRole"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
-        eType="#//Tool"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="memory" eType="#//Memory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
-        eType="#//Model"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="knowledge" eType="#//Knowledge"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//Reasoning"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" eType="#//Storage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="goal" eType="#//Goal"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//State"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="team" eType="#//Team" eOpposite="#//Team/members"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="workflow" eType="#//Workflow"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="interpreter" eType="#//Interpreter"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-        eType="#//Requirement"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
-    <eLiterals name="PUBLIC"/>
-    <eLiterals name="TEAM" value="1"/>
-    <eLiterals name="PRIVATE" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="AgentRole">
-    <eLiterals name="MANAGER"/>
-    <eLiterals name="SPECIALIST" value="1"/>
-    <eLiterals name="MEMBER" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tool">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="#//Task"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
-        eType="#//Environment"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
-        eType="#//Hook" eOpposite="#//Hook/usedInTool"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Memory">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//MemoryType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
-        eType="#//Context" containment="true" eOpposite="#//Context/originMemory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sessions" upperBound="-1"
-        eType="#//Session" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="storage" eType="#//Storage"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="MemoryType">
-    <eLiterals name="WORKING"/>
-    <eLiterals name="EPISODIC" value="1"/>
-    <eLiterals name="SEMANTIC" value="2"/>
-    <eLiterals name="PROCEDURAL" value="3"/>
-    <eLiterals name="RESOURCE" value="4"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Model">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//Reasoning"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="modelParams" eType="#//Context"
-        eOpposite="#//Context/associatedModel"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Knowledge">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="retrievalStrategy" eType="#//RetrievalStrategy"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//ExternalData"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="associatedMemory" eType="#//Memory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="associatedStorage" eType="#//Storage"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Reasoning">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//ReasoningStrategy"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usedInKnowledge" eType="#//Knowledge"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ReasoningStrategy">
-    <eLiterals name="RULE_BASED"/>
-    <eLiterals name="PLANNING" value="1"/>
-    <eLiterals name="ML_BASED" value="2"/>
-    <eLiterals name="HYBRID" value="3"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Storage">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//StorageType"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
-        eType="#//State" eOpposite="#//State/storedAt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//ExternalData"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="StorageType">
-    <eLiterals name="FILE_SYSTEM"/>
-    <eLiterals name="SQL_DATABASE" value="1"/>
-    <eLiterals name="KEY_VALUE_DB" value="2"/>
-    <eLiterals name="GRAPH_DB" value="3"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Prompt">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputSchema" eType="#//InputSchema"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outputSchema" eType="#//OutputSchema"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//PromptTemplate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
-        eType="#//Context"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PromptType">
-    <eLiterals name="SYSTEM"/>
-    <eLiterals name="USER" value="1"/>
-    <eLiterals name="ASSISTANT" value="2"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Team">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//Agent" eOpposite="#//Agent/team"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedMemory" eType="#//Memory"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedStorage" eType="#//Storage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedKnowledge" eType="#//Knowledge"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="State">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="storedAt" eType="#//Storage"
-        eOpposite="#//Storage/states"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cachedAt" eType="#//Memory"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Task">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" upperBound="-1"
-        eType="#//Agent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//User"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Environment">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//ExternalData"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="associatedContext" eType="#//Context"
-        eOpposite="#//Context/originEnvironment"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VectorDB" eSuperTypes="#//Storage">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="embeddings" upperBound="-1"
-        eType="#//Embedding"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Hook">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="usedInTool" eType="#//Tool"
-        eOpposite="#//Tool/hooks"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="User">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sessions" upperBound="-1"
-        eType="#//Session"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="userContext" eType="#//Context"
-        eOpposite="#//Context/originUser"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RetrievalStrategy" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RAG" eSuperTypes="#//RetrievalStrategy">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="vectorDB" eType="#//VectorDB"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Workflow">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-        eType="#//Step" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-        eType="#//Transition" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="SchemaType">
-    <eLiterals name="JSON_SCHEMA"/>
-    <eLiterals name="XML" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputSchema">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SchemaType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Goal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//User"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Session">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//User"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//Agent"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DirectLLMCall">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//Model"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="prompt" eType="#//Prompt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Instruction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-        eType="#//Requirement"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HumanInteraction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBlocking" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="responsibleActor" eType="#//User"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Context">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originEnvironment" eType="#//Environment"
-        eOpposite="#//Environment/associatedContext"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originMemory" eType="#//Memory"
-        eOpposite="#//Memory/contexts"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="originUser" eType="#//User"
-        eOpposite="#//User/userContext"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="associatedModel" eType="#//Model"
-        eOpposite="#//Model/modelParams"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OutputSchema">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//SchemaType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="TemplateType">
-    <eLiterals name="USER_DEFINED"/>
-    <eLiterals name="SYSTEM_DEFINED" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PromptTemplate">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="template" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TemplateType"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Requirement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
-        eType="#//Tool"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Server">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="exposedAgents" upperBound="-1"
-        eType="#//Agent"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalData" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//ExternalData">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Interpreter">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sandboxed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="runtime" eType="#//Runtime"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Runtime">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="KVStorage" eSuperTypes="#//Storage"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GraphStorage" eSuperTypes="#//Storage"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Node">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Toolkit">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
-        eType="#//Tool"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Embedding">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vector" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//Node">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Node">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//Step"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//Step"/>
-  </eClassifiers>
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="agentic" nsURI="http://agentic" nsPrefix="agentic">
+  <eSubpackages name="construction" nsURI="http://agentic/construction" nsPrefix="construction">
+    <eClassifiers xsi:type="ecore:EClass" name="Agent">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//construction/Visibility"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="#//construction/AgentRole"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+          eType="#//construction/Tool"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="memory" eType="#//construction/Memory"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+          eType="#//construction/Model"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="knowledge" eType="#//construction/Knowledge"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//construction/Reasoning"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="storage" eType="#//construction/Storage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="goal" eType="#//construction/Goal"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="state" eType="#//construction/State"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="team" eType="#//communication/Team"
+          eOpposite="#//communication/Team/members"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="workflow" eType="#//construction/Workflow"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="interpreter" eType="#//construction/Interpreter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+          eType="#//construction/Requirement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
+      <eLiterals name="PUBLIC"/>
+      <eLiterals name="TEAM" value="1"/>
+      <eLiterals name="PRIVATE" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="AgentRole">
+      <eLiterals name="MANAGER"/>
+      <eLiterals name="SPECIALIST" value="1"/>
+      <eLiterals name="MEMBER" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Tool">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+          eType="#//construction/Task"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="environments" upperBound="-1"
+          eType="#//communication/Environment"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
+          eType="#//construction/Hook" eOpposite="#//construction/Hook/usedInTool"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Memory">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/MemoryType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
+          eType="#//communication/Context" containment="true" eOpposite="#//communication/Context/originMemory"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sessions" upperBound="-1"
+          eType="#//communication/Session" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="storage" eType="#//construction/Storage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="MemoryType">
+      <eLiterals name="WORKING"/>
+      <eLiterals name="EPISODIC" value="1"/>
+      <eLiterals name="SEMANTIC" value="2"/>
+      <eLiterals name="PROCEDURAL" value="3"/>
+      <eLiterals name="RESOURCE" value="4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Model">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//construction/Reasoning"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="modelParams" eType="#//communication/Context"
+          eOpposite="#//communication/Context/associatedModel"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Knowledge">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="retrievalStrategy" eType="#//construction/RetrievalStrategy"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//construction/ExternalData"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="associatedMemory" eType="#//construction/Memory"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="associatedStorage" eType="#//construction/Storage"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Reasoning">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//construction/ReasoningStrategy"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="usedInKnowledge" eType="#//construction/Knowledge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="ReasoningStrategy">
+      <eLiterals name="RULE_BASED"/>
+      <eLiterals name="PLANNING" value="1"/>
+      <eLiterals name="ML_BASED" value="2"/>
+      <eLiterals name="HYBRID" value="3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Storage">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/StorageType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+          eType="#//construction/State" eOpposite="#//construction/State/storedAt"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//construction/ExternalData"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="StorageType">
+      <eLiterals name="FILE_SYSTEM"/>
+      <eLiterals name="SQL_DATABASE" value="1"/>
+      <eLiterals name="KEY_VALUE_DB" value="2"/>
+      <eLiterals name="GRAPH_DB" value="3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="State">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="storedAt" eType="#//construction/Storage"
+          eOpposite="#//construction/Storage/states"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cachedAt" eType="#//construction/Memory"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Task">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" upperBound="-1"
+          eType="#//construction/Agent"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="VectorDB" eSuperTypes="#//construction/Storage">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="embeddings" upperBound="-1"
+          eType="#//construction/Embedding"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Hook">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="usedInTool" eType="#//construction/Tool"
+          eOpposite="#//construction/Tool/hooks"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RetrievalStrategy" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RAG" eSuperTypes="#//construction/RetrievalStrategy">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="vectorDB" eType="#//construction/VectorDB"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Workflow">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
+          eType="#//construction/Step" containment="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+          eType="#//construction/Transition" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Goal">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="TemplateType">
+      <eLiterals name="USER_DEFINED"/>
+      <eLiterals name="SYSTEM_DEFINED" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PromptTemplate">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="template" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/TemplateType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+          eType="#//construction/Tool"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Server">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="exposedAgents" upperBound="-1"
+          eType="#//construction/Agent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalData" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//construction/ExternalData">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Interpreter">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="sandboxed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="runtime" eType="#//construction/Runtime"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Runtime">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="KVStorage" eSuperTypes="#//construction/Storage"/>
+    <eClassifiers xsi:type="ecore:EClass" name="GraphStorage" eSuperTypes="#//construction/Storage"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Node">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Toolkit">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
+          eType="#//construction/Tool"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Embedding">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="vector" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//construction/Node">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//construction/Node">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//construction/Step"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//construction/Step"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="communication" nsURI="http://agentic/communication" nsPrefix="communication">
+    <eClassifiers xsi:type="ecore:EClass" name="Prompt">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="inputSchema" eType="#//communication/InputSchema"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="outputSchema" eType="#//communication/OutputSchema"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//construction/PromptTemplate"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
+          eType="#//communication/Context"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="PromptType">
+      <eLiterals name="SYSTEM"/>
+      <eLiterals name="USER" value="1"/>
+      <eLiterals name="ASSISTANT" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Team">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+          eType="#//construction/Agent" eOpposite="#//construction/Agent/team"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sharedMemory" eType="#//construction/Memory"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sharedStorage" eType="#//construction/Storage"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sharedKnowledge" eType="#//construction/Knowledge"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Environment">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//construction/ExternalData"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="associatedContext" eType="#//communication/Context"
+          eOpposite="#//communication/Context/originEnvironment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="User">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sessions" upperBound="-1"
+          eType="#//communication/Session"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="userContext" eType="#//communication/Context"
+          eOpposite="#//communication/Context/originUser"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="SchemaType">
+      <eLiterals name="JSON_SCHEMA"/>
+      <eLiterals name="XML" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InputSchema">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//communication/SchemaType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Session">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//communication/User"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//construction/Agent"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DirectLLMCall">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="model" eType="#//construction/Model"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="prompt" eType="#//communication/Prompt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Instruction">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
+          eType="#//construction/Requirement"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="HumanInteraction">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isBlocking" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="responsibleActor" eType="#//communication/User"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Context">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="originEnvironment" eType="#//communication/Environment"
+          eOpposite="#//communication/Environment/associatedContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="originMemory" eType="#//construction/Memory"
+          eOpposite="#//construction/Memory/contexts"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="originUser" eType="#//communication/User"
+          eOpposite="#//communication/User/userContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="associatedModel" eType="#//construction/Model"
+          eOpposite="#//construction/Model/modelParams"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="OutputSchema">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="definition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//communication/SchemaType"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>
