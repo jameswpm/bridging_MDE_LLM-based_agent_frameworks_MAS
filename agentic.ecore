@@ -217,7 +217,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="User">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="sessions" upperBound="-1"
-          eType="#//communication/Session"/>
+          eType="#//communication/Session" eOpposite="#//communication/Session/user"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="userContext" eType="#//communication/Context"
           eOpposite="#//communication/Context/originUser"/>
     </eClassifiers>
@@ -230,7 +230,8 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//communication/SchemaType"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Session">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//communication/User"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="user" eType="#//communication/User"
+          eOpposite="#//communication/User/sessions"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="agent" eType="#//construction/Agent"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DirectLLMCall">
