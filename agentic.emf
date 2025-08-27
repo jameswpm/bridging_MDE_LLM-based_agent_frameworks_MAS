@@ -384,7 +384,7 @@ package communication{
 	class User {
 	  // A User is an external actor (person or team) who interacts with agents.
 	  attr String identifier;
-	  ref Session[*] sessions;
+	  ref Session[*]#user sessions;
 	  ref Context#originUser userContext;
 	}
 	
@@ -410,7 +410,7 @@ package communication{
 	 * Links a user to an agent over interactions.
 	 */
 	class Session {
-	  ref User user;
+	  ref User#sessions user;
 	  ref construction.Agent agent;
 	}
 	
