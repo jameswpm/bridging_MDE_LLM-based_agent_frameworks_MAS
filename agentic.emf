@@ -179,7 +179,7 @@ package construction{
 	 */
 	class VectorDB extends Storage {
 	// VectorDB stores information in vector form (via embeddings) for similarity-based retrieval.
-	  ref Embedding[*] embeddings;
+	  //ref Embedding[*] embeddings; Excluded by the score
 	}
 	
 	/**
@@ -208,8 +208,8 @@ package construction{
 	 * A deterministic sequence of steps for agent execution.
 	 */
 	class Workflow {
-	  val Step[*] steps;
-	  val Transition[*] transitions;
+	  //val Step[*] steps;
+	  //val Transition[*] transitions;
 	}
 	
 	/**
@@ -279,55 +279,43 @@ package construction{
 	}
 	
 	/**
-	 * Key-value storage for temporary data.
+	 * Abstraction of a component or step in a workflow. Excluded by association with excluded term
 	 */
-	class KVStorage extends Storage {
-	}
-	
-	/**
-	 * Graph database for structured relationships.
-	 */
-	class GraphStorage extends Storage {
-	}
-	
-	/**
-	 * Abstraction of a component or step in a workflow.
-	 */
-	class Node {
+	/*class Node {
 	  attr String identifier;
 	  attr String type;
-	}
+	}*/
 	
 	/**
-	 * Collection of tools available to agents.
+	 * Collection of tools available to agents. Excluded by Score
 	 */
-	class Toolkit {
+	/*class Toolkit {
 	  ref Tool[*] tools;
-	}
+	}*/
 	
 	/**
-	 * Numeric vector representation of information.
+	 * Numeric vector representation of information. Excluded by the Score
 	 */
-	class Embedding {
+	/*class Embedding {
 	  attr String vector;
 	  attr int dimension;
-	}
+	}*/
 	
 	/**
-	 * A unit of action within a workflow.
+	 * A unit of action within a workflow. Excluded by the Score
 	 */
-	class Step extends Node {
+	/*class Step extends Node {
 	  attr String name;
-	}
+	}*/
 	
 	/**
-	 * Defines transitions between workflow steps.
+	 * Defines transitions between workflow steps. Excluded by the Score
 	 */
-	class Transition extends Node {
+	/*class Transition extends Node {
 	  attr String condition;
-	  ref Step source;
-	  ref Step target;
-	}
+	  //ref Step source;
+	  //ref Step target;
+	}*/
 }
 
 // =======================

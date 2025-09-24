@@ -108,10 +108,7 @@
           eType="#//construction/Agent"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="VectorDB" eSuperTypes="#//construction/Storage">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="embeddings" upperBound="-1"
-          eType="#//construction/Embedding"/>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="VectorDB" eSuperTypes="#//construction/Storage"/>
     <eClassifiers xsi:type="ecore:EClass" name="Hook">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="usedInTool" eType="#//construction/Tool"
@@ -123,12 +120,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="RAG" eSuperTypes="#//construction/RetrievalStrategy">
       <eStructuralFeatures xsi:type="ecore:EReference" name="vectorDB" eType="#//construction/VectorDB"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Workflow">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="steps" upperBound="-1"
-          eType="#//construction/Step" containment="true"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
-          eType="#//construction/Transition" containment="true"/>
-    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Workflow"/>
     <eClassifiers xsi:type="ecore:EClass" name="Goal">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
@@ -162,28 +154,6 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Runtime">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="KVStorage" eSuperTypes="#//construction/Storage"/>
-    <eClassifiers xsi:type="ecore:EClass" name="GraphStorage" eSuperTypes="#//construction/Storage"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Node">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Toolkit">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
-          eType="#//construction/Tool"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Embedding">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="vector" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="dimension" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Step" eSuperTypes="#//construction/Node">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//construction/Node">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//construction/Step"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//construction/Step"/>
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="communication" nsURI="http://agentic/communication" nsPrefix="communication">
