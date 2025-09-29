@@ -4,297 +4,267 @@
     modelName="Agentic" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="23.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
-  <foreignModel>agentic.ecore</foreignModel>
-  <genPackages prefix="Agentic" disposableProviderFactory="true" ecorePackage="agentic.ecore#/">
-    <nestedGenPackages prefix="Construction" disposableProviderFactory="true" ecorePackage="agentic.ecore#//construction">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/Visibility">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/Visibility/PUBLIC"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/Visibility/TEAM"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/Visibility/PRIVATE"/>
+  <foreignModel>agent_frameworks.ecore</foreignModel>
+  <genPackages prefix="Agentic" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#/">
+    <nestedGenPackages prefix="Construction" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#//construction">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/Visibility">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/Visibility/PUBLIC"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/Visibility/TEAM"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/Visibility/PRIVATE"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/AgentRole">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/AgentRole/MANAGER"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/AgentRole/SPECIALIST"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/AgentRole/MEMBER"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/AgentRole">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/AgentRole/MANAGER"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/AgentRole/SPECIALIST"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/AgentRole/MEMBER"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/MemoryType">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/MemoryType/WORKING"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/MemoryType/EPISODIC"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/MemoryType/SEMANTIC"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/MemoryType/PROCEDURAL"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/MemoryType/RESOURCE"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/MemoryType">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/MemoryType/WORKING"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/MemoryType/EPISODIC"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/MemoryType/SEMANTIC"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/MemoryType/PROCEDURAL"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/MemoryType/RESOURCE"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/ReasoningStrategy">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/ReasoningStrategy/RULE_BASED"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/ReasoningStrategy/PLANNING"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/ReasoningStrategy/ML_BASED"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/ReasoningStrategy/HYBRID"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/ReasoningStrategy">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/ReasoningStrategy/RULE_BASED"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/ReasoningStrategy/PLANNING"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/ReasoningStrategy/ML_BASED"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/ReasoningStrategy/HYBRID"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/StorageType">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/StorageType/FILE_SYSTEM"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/StorageType/SQL_DATABASE"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/StorageType/KEY_VALUE_DB"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/StorageType/GRAPH_DB"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/StorageType">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/StorageType/FILE_SYSTEM"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/StorageType/SQL_DATABASE"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/StorageType/KEY_VALUE_DB"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/StorageType/GRAPH_DB"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//construction/TemplateType">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/TemplateType/USER_DEFINED"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//construction/TemplateType/SYSTEM_DEFINED"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/TemplateType">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/TemplateType/USER_DEFINED"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/TemplateType/SYSTEM_DEFINED"/>
       </genEnums>
-      <genClasses ecoreClass="agentic.ecore#//construction/Agent">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Agent/identifier"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Agent/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Agent/visibility"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Agent/role"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Agent/type"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Agent">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Agent/identifier"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Agent/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Agent/visibility"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Agent/role"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Agent/type"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/tools"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/tools"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/memory"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/memory"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/models"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/models"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/knowledge"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/knowledge"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/reasoning"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/reasoning"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/storage"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/storage"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/goal"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/goal"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/state"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/state"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/team"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/team"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/workflow"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/workflow"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/interpreter"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/interpreter"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Agent/requirements"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Agent/requirements"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Tool">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Tool/name"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Tool">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Tool/name"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Tool/tasks"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Tool/tasks"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Tool/environments"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Tool/environments"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Tool/hooks"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Tool/hooks"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Memory">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Memory/type"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agentic.ecore#//construction/Memory/contexts"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agentic.ecore#//construction/Memory/sessions"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Memory">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Memory/type"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Memory/contexts"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Memory/sessions"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Memory/storage"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Memory/storage"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Model">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Model/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Model/version"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Model">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Model/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Model/version"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Model/reasoning"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Model/reasoning"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Model/modelParams"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Model/modelParams"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Knowledge">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Knowledge/domain"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Knowledge">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Knowledge/domain"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Knowledge/retrievalStrategy"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Knowledge/retrievalStrategy"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Knowledge/data"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Knowledge/data"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Knowledge/associatedMemory"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Knowledge/associatedMemory"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Knowledge/associatedStorage"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Knowledge/associatedStorage"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Reasoning">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Reasoning/strategy"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Reasoning">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Reasoning/strategy"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Reasoning/usedInKnowledge"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Reasoning/usedInKnowledge"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Storage">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Storage/type"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Storage">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Storage/type"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Storage/states"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Storage/states"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Storage/data"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Storage/data"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/State">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/State/value"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/State/createdAt"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/State">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/State/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/State/createdAt"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/State/storedAt"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/State/storedAt"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/State/cachedAt"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/State/cachedAt"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Task">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Task/description"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Task">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Task/description"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Task/performedBy"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Task/performedBy"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Task/definedBy"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Task/definedBy"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/VectorDB">
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/VectorDB"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Hook">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Hook/trigger"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/VectorDB/embeddings"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Hook/usedInTool"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Hook">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Hook/trigger"/>
+      <genClasses image="false" ecoreClass="agent_frameworks.ecore#//construction/RetrievalStrategy">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/RetrievalStrategy/name"/>
+      </genClasses>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/RAG">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Hook/usedInTool"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/RAG/vectorDB"/>
       </genClasses>
-      <genClasses image="false" ecoreClass="agentic.ecore#//construction/RetrievalStrategy">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/RetrievalStrategy/name"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/RAG">
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Workflow"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Goal">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Goal/objective"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/RAG/vectorDB"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Goal/definedBy"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Workflow">
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agentic.ecore#//construction/Workflow/steps"/>
-        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference agentic.ecore#//construction/Workflow/transitions"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/PromptTemplate">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/PromptTemplate/template"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/PromptTemplate/type"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Goal">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Goal/objective"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Requirement">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Requirement/condition"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Goal/definedBy"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Requirement/tools"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/PromptTemplate">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/PromptTemplate/template"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/PromptTemplate/type"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Requirement">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Requirement/condition"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Server">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Server/endpoint"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Requirement/tools"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Server/exposedAgents"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Server">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Server/endpoint"/>
+      <genClasses image="false" ecoreClass="agent_frameworks.ecore#//construction/ExternalData"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/File">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/File/format"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/File/path"/>
+      </genClasses>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Interpreter">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Interpreter/sandboxed"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Server/exposedAgents"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/Interpreter/runtime"/>
       </genClasses>
-      <genClasses image="false" ecoreClass="agentic.ecore#//construction/ExternalData"/>
-      <genClasses ecoreClass="agentic.ecore#//construction/File">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/File/format"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/File/path"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Interpreter">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Interpreter/sandboxed"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Interpreter/runtime"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Runtime">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Runtime/environment"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/KVStorage"/>
-      <genClasses ecoreClass="agentic.ecore#//construction/GraphStorage"/>
-      <genClasses ecoreClass="agentic.ecore#//construction/Node">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Node/identifier"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Node/type"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Toolkit">
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Toolkit/tools"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Embedding">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Embedding/vector"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Embedding/dimension"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Step">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Step/name"/>
-      </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//construction/Transition">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//construction/Transition/condition"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Transition/source"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//construction/Transition/target"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/Runtime">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Runtime/environment"/>
       </genClasses>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Communication" disposableProviderFactory="true" ecorePackage="agentic.ecore#//communication">
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//communication/PromptType">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//communication/PromptType/SYSTEM"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//communication/PromptType/USER"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//communication/PromptType/ASSISTANT"/>
+    <nestedGenPackages prefix="Communication" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#//communication">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//communication/PromptType">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/PromptType/SYSTEM"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/PromptType/USER"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/PromptType/ASSISTANT"/>
       </genEnums>
-      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agentic.ecore#//communication/SchemaType">
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//communication/SchemaType/JSON_SCHEMA"/>
-        <genEnumLiterals ecoreEnumLiteral="agentic.ecore#//communication/SchemaType/XML"/>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//communication/SchemaType">
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/SchemaType/JSON_SCHEMA"/>
+        <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/SchemaType/XML"/>
       </genEnums>
-      <genClasses ecoreClass="agentic.ecore#//communication/Prompt">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/Prompt/content"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Prompt">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/Prompt/content"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Prompt/inputSchema"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Prompt/inputSchema"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Prompt/outputSchema"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Prompt/outputSchema"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Prompt/template"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Prompt/template"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Prompt/contexts"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Prompt/contexts"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/Team">
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Team">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Team/members"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Team/members"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Team/sharedMemory"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Team/sharedMemory"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Team/sharedStorage"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Team/sharedStorage"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Team/sharedKnowledge"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Team/sharedKnowledge"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/Environment">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/Environment/name"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/Environment/type"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Environment">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/Environment/name"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/Environment/type"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Environment/data"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Environment/data"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Environment/associatedContext"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Environment/associatedContext"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/User">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/User/identifier"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/User">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/User/identifier"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/User/sessions"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/User/sessions"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/User/userContext"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/User/userContext"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/InputSchema">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/InputSchema/definition"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/InputSchema/type"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/InputSchema">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/InputSchema/definition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/InputSchema/type"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/Session">
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Session">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Session/user"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Session/user"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Session/agent"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Session/agent"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/DirectLLMCall">
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/DirectLLMCall">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/DirectLLMCall/model"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/DirectLLMCall/model"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/DirectLLMCall/prompt"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/DirectLLMCall/prompt"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/Instruction">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/Instruction/content"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Instruction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/Instruction/content"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Instruction/requirements"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Instruction/requirements"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/HumanInteraction">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/HumanInteraction/isBlocking"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/HumanInteraction">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/HumanInteraction/isBlocking"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/HumanInteraction/responsibleActor"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/HumanInteraction/responsibleActor"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/Context">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/Context/content"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/Context">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/Context/content"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Context/originEnvironment"/>
-        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference agentic.ecore#//communication/Context/originMemory"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Context/originEnvironment"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Context/originMemory"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Context/originUser"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Context/originUser"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference agentic.ecore#//communication/Context/associatedModel"/>
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//communication/Context/associatedModel"/>
       </genClasses>
-      <genClasses ecoreClass="agentic.ecore#//communication/OutputSchema">
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/OutputSchema/definition"/>
-        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agentic.ecore#//communication/OutputSchema/type"/>
+      <genClasses ecoreClass="agent_frameworks.ecore#//communication/OutputSchema">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/OutputSchema/definition"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//communication/OutputSchema/type"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>
