@@ -6,7 +6,8 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>agent_frameworks.ecore</foreignModel>
   <genPackages prefix="Agentic" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#/">
-    <nestedGenPackages prefix="Construction" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#//construction">
+    <nestedGenPackages prefix="Construction" basePackage="agentic" disposableProviderFactory="true"
+        ecorePackage="agent_frameworks.ecore#//construction">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//construction/Visibility">
         <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/Visibility/PUBLIC"/>
         <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//construction/Visibility/TEAM"/>
@@ -179,8 +180,14 @@
       <genClasses ecoreClass="agent_frameworks.ecore#//construction/Runtime">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute agent_frameworks.ecore#//construction/Runtime/environment"/>
       </genClasses>
+      <genClasses ecoreClass="agent_frameworks.ecore#//construction/System">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference agent_frameworks.ecore#//construction/System/components"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="agent_frameworks.ecore#//construction/Component"/>
     </nestedGenPackages>
-    <nestedGenPackages prefix="Communication" disposableProviderFactory="true" ecorePackage="agent_frameworks.ecore#//communication">
+    <nestedGenPackages prefix="Communication" basePackage="agentic" disposableProviderFactory="true"
+        ecorePackage="agent_frameworks.ecore#//communication">
       <genEnums typeSafeEnumCompatible="false" ecoreEnum="agent_frameworks.ecore#//communication/PromptType">
         <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/PromptType/SYSTEM"/>
         <genEnumLiterals ecoreEnumLiteral="agent_frameworks.ecore#//communication/PromptType/USER"/>

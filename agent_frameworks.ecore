@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="agentic" nsURI="http://agentic" nsPrefix="agentic">
   <eSubpackages name="construction" nsURI="http://agentic/construction" nsPrefix="construction">
-    <eClassifiers xsi:type="ecore:EClass" name="Agent">
+    <eClassifiers xsi:type="ecore:EClass" name="Agent" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//construction/Visibility"/>
@@ -35,7 +35,7 @@
       <eLiterals name="SPECIALIST" value="1"/>
       <eLiterals name="MEMBER" value="2"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Tool">
+    <eClassifiers xsi:type="ecore:EClass" name="Tool" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
           eType="#//construction/Task"/>
@@ -44,7 +44,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="hooks" upperBound="-1"
           eType="#//construction/Hook" eOpposite="#//construction/Hook/usedInTool"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Memory">
+    <eClassifiers xsi:type="ecore:EClass" name="Memory" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/MemoryType"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="contexts" upperBound="-1"
           eType="#//communication/Context" containment="true" eOpposite="#//communication/Context/originMemory"/>
@@ -59,21 +59,21 @@
       <eLiterals name="PROCEDURAL" value="3"/>
       <eLiterals name="RESOURCE" value="4"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="reasoning" eType="#//construction/Reasoning"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="modelParams" eType="#//communication/Context"
           eOpposite="#//communication/Context/associatedModel"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Knowledge">
+    <eClassifiers xsi:type="ecore:EClass" name="Knowledge" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domain" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="retrievalStrategy" eType="#//construction/RetrievalStrategy"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="data" eType="#//construction/ExternalData"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="associatedMemory" eType="#//construction/Memory"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="associatedStorage" eType="#//construction/Storage"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Reasoning">
+    <eClassifiers xsi:type="ecore:EClass" name="Reasoning" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="strategy" eType="#//construction/ReasoningStrategy"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="usedInKnowledge" eType="#//construction/Knowledge"/>
     </eClassifiers>
@@ -83,7 +83,7 @@
       <eLiterals name="ML_BASED" value="2"/>
       <eLiterals name="HYBRID" value="3"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Storage">
+    <eClassifiers xsi:type="ecore:EClass" name="Storage" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/StorageType"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
           eType="#//construction/State" eOpposite="#//construction/State/storedAt"/>
@@ -95,33 +95,34 @@
       <eLiterals name="KEY_VALUE_DB" value="2"/>
       <eLiterals name="GRAPH_DB" value="3"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="storedAt" eType="#//construction/Storage"
           eOpposite="#//construction/Storage/states"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="cachedAt" eType="#//construction/Memory"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="performedBy" upperBound="-1"
           eType="#//construction/Agent"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="VectorDB" eSuperTypes="#//construction/Storage"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Hook">
+    <eClassifiers xsi:type="ecore:EClass" name="Hook" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="usedInTool" eType="#//construction/Tool"
           eOpposite="#//construction/Tool/hooks"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="RetrievalStrategy" abstract="true">
+    <eClassifiers xsi:type="ecore:EClass" name="RetrievalStrategy" abstract="true"
+        eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RAG" eSuperTypes="#//construction/RetrievalStrategy">
       <eStructuralFeatures xsi:type="ecore:EReference" name="vectorDB" eType="#//construction/VectorDB"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Workflow"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Goal">
+    <eClassifiers xsi:type="ecore:EClass" name="Workflow" eSuperTypes="#//construction/Component"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="definedBy" eType="#//communication/User"/>
     </eClassifiers>
@@ -129,32 +130,37 @@
       <eLiterals name="USER_DEFINED"/>
       <eLiterals name="SYSTEM_DEFINED" value="1"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="PromptTemplate">
+    <eClassifiers xsi:type="ecore:EClass" name="PromptTemplate" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="template" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//construction/TemplateType"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+    <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="condition" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="tools" upperBound="-1"
           eType="#//construction/Tool"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Server">
+    <eClassifiers xsi:type="ecore:EClass" name="Server" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="endpoint" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="exposedAgents" upperBound="-1"
           eType="#//construction/Agent"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExternalData" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalData" abstract="true" eSuperTypes="#//construction/Component"/>
     <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//construction/ExternalData">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Interpreter">
+    <eClassifiers xsi:type="ecore:EClass" name="Interpreter" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sandboxed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="runtime" eType="#//construction/Runtime"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Runtime">
+    <eClassifiers xsi:type="ecore:EClass" name="Runtime" eSuperTypes="#//construction/Component">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="System">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+          eType="#//construction/Component" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Component" abstract="true"/>
   </eSubpackages>
   <eSubpackages name="communication" nsURI="http://agentic/communication" nsPrefix="communication">
     <eClassifiers xsi:type="ecore:EClass" name="Prompt">
