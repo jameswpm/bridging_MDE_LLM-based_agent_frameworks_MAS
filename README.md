@@ -1,6 +1,6 @@
 # Bridging MDE and LLM-based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel
 
-This repository contains artifacts for the paper *"Bridging MDE and LLM-based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel"* submitted to the **14th International Conference on Model-Based Software and Systems Engineering (MODELSWARD 2026)**.
+This repository contains artifacts for the paper *"Bridging MDE and LLM-based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel"* accepted for publication and presentation to the **14th International Conference on Model-Based Software and Systems Engineering (MODELSWARD 2026)**.
 
 ## Overview
 
@@ -66,7 +66,23 @@ The folder `data` is not part of the Eclipse project. It contains supplementary 
 
 ## Contact
 
-*Contact information anonymized for review.*
+TODO: 
+
+## Citation
+
+If you use this work, please cite:
+
+```bibtex
+@inproceedings{Miranda2026_MDE_LLM_Agents,
+  author    = {Miranda, James Pontes and Radermacher, Ansgar and Baligand, Fabien and Bonnail, Julie and G{\'e}rard, S{\'e}bastien and Bannerot, Pascal and Del Fabro, Marcos Didonet},
+  title     = {Bridging {MDE} and {LLM}-{Based} {Agent} {Frameworks} for {Multi}-{Agent} {Systems}: {A} {Quasi}-{Systematic} {Review} and {Metamodel}},
+  booktitle = {Proceedings of the 14th International Conference on Model-Based Software and Systems Engineering},
+  year      = {2026},
+  pages     = {33--44},
+  isbn      = {978-989-758-798-6},
+  issn      = {2184-4348}
+}
+```
 
 ---
 

@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+title: "Bridging MDE and LLM-Based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel"
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Miranda
+    given-names: James Pontes
+  - family-names: Radermacher
+    given-names: Ansgar
+  - family-names: Baligand
+    given-names: Fabien
+  - family-names: Bonnail
+    given-names: Julie
+  - family-names: Gérard
+    given-names: Sébastien
+  - family-names: Bannerot
+    given-names: Pascal
+  - family-names: Del Fabro
+    given-names: Marcos Didonet
+date-released: "2026-02-26"
+version: "1.0.0"
+repository-code: "https://github.com/jameswpm/bridging_MDE_LLM-based_agent_frameworks_MAS"
+license: "MIT"
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: Miranda
+      given-names: James Pontes
+    - family-names: Radermacher
+      given-names: Ansgar
+    - family-names: Baligand
+      given-names: Fabien
+    - family-names: Bonnail
+      given-names: Julie
+    - family-names: Gérard
+      given-names: Sébastien
+    - family-names: Bannerot
+      given-names: Pascal
+    - family-names: Del Fabro
+      given-names: Marcos Didonet
+  title: "Bridging MDE and LLM-Based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel"
+  collection-title: "Proceedings of the 14th International Conference on Model-Based Software and Systems Engineering"
+  year: 2026
+  start: 33
+  end: 44
+  isbn: "978-989-758-798-6"
+  issn: "2184-4348"
+alternative-citation:
+  type: "software"
+  title: "Bridging MDE and LLM-Based Agent Frameworks for Multi-Agent Systems: Repository"
+  authors:
+    - family-names: "Miranda"
+      given-names: "James Pontes"
+  version: "1.0.0"
+  repository-code: "https://github.com/jameswpm/bridging_MDE_LLM-based_agent_frameworks_MAS"
+  license: "MIT"
+  date-released: "2026-02-26"
