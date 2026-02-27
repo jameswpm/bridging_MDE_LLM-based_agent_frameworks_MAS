@@ -63,10 +63,14 @@ The folder `data` is not part of the Eclipse project. It contains supplementary 
 ├── agent_frameworks.genmodel             # EMF code generation model
 └── agent_frameworks.aird                 # Sirius modeling project file for diagrams generation
 ```
+**Note: ** `figures` contain the diagram in diffeent file formats to allow proper navigation and high resolution.
 
 ## Contact
 
-TODO: 
+James Pontes Miranda
+CEA-List, Paris-Saclay, France
+DRT / LIST
+james.pontesmiranda@cea.fr
 
 ## Citation
 
