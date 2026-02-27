@@ -19,7 +19,7 @@ authors:
 date-released: "2026-02-26"
 version: "1.0.0"
 repository-code: "https://github.com/jameswpm/bridging_MDE_LLM-based_agent_frameworks_MAS"
-license: "MIT"
+license: "CC BY 4.0"
 preferred-citation:
   type: conference-paper
   authors:
@@ -52,5 +52,5 @@ alternative-citation:
       given-names: "James Pontes"
   version: "1.0.0"
   repository-code: "https://github.com/jameswpm/bridging_MDE_LLM-based_agent_frameworks_MAS"
-  license: "MIT"
+  license: "CC BY 4.0"
   date-released: "2026-02-26"
