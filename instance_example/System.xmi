@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<construction:System
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:construction="http://agentic/construction"
+    xsi:schemaLocation="http://agentic/construction ../agent_frameworks.ecore#//construction">
+  <components
+      xsi:type="construction:Runtime"
+      environment="Python 3.11"/>
+  <components
+      xsi:type="construction:Interpreter"
+      sandboxed="true"
+      runtime="//@components.0"/>
+  <components
+      xsi:type="construction:VectorDB"
+      type="KEY_VALUE_DB"/>
+  <components
+      xsi:type="construction:Agent"
+      identifier="agent.weather.001"
+      name="GetWeatherAgent"
+      role="SPECIALIST"
+      type="ToolAugmentedLLMAgent"
+      tools="//@components.6"
+      memory="//@components.8"
+      models="//@components.4"
+      goal="//@components.9"
+      interpreter="//@components.1"/>
+  <components
+      xsi:type="construction:Model"
+      name="GPT"
+      version="4.0"
+      reasoning="//@components.5"/>
+  <components
+      xsi:type="construction:Reasoning"
+      strategy="ML_BASED"/>
+  <components
+      xsi:type="construction:Tool"
+      name="WeatherAPITool"/>
+  <components
+      xsi:type="construction:Task"
+      description="Fetch weather by city name"
+      performedBy="//@components.3"/>
+  <components
+      xsi:type="construction:Memory"/>
+  <components
+      xsi:type="construction:Goal"
+      objective="Provide accurate real-time weather information"/>
+  <components
+      xsi:type="construction:Agent"
+      identifier="agent.currency.001"
+      name="GetCurrencyAgent"
+      role="SPECIALIST"
+      type="ToolAugmentedLLMAgent"
+      tools="//@components.11"
+      models="//@components.4"
+      knowledge="//@components.14"/>
+  <components
+      xsi:type="construction:Tool"
+      name="CurrencyExchangeAPITool"/>
+  <components
+      xsi:type="construction:Task"
+      description="Convert amount between currencies"
+      performedBy="//@components.10"/>
+  <components
+      xsi:type="construction:RAG"
+      name="CurrencyKnowledgeRAG"
+      vectorDB="//@components.2"/>
+  <components
+      xsi:type="construction:Knowledge"
+      domain="Foreign Exchange"
+      associatedMemory="//@components.8"
+      associatedStorage="//@components.2"/>
+</construction:System>
