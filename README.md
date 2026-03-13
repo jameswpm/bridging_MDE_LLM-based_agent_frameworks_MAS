@@ -2,6 +2,8 @@
 
 This repository contains artifacts for the paper *"Bridging MDE and LLM-based Agent Frameworks for Multi-Agent Systems: A Quasi-Systematic Review and Metamodel"* accepted for publication and presentation to the **14th International Conference on Model-Based Software and Systems Engineering (MODELSWARD 2026)**.
 
+  - The slide deck for the presentation is available on [Zenodo](https://doi.org/10.5281/zenodo.18999772)
+
 **IMPORTANT NOTE**: The code may have changed since the paper's publication. The `paper_artifact` branch and the [Zenodo permalink](https://zenodo.org/records/18800373) (DOI: 10.5281/zenodo.18800372) contain the exact code supporting the paper's results. The `main` branch may include updates.
 
 ## Overview
